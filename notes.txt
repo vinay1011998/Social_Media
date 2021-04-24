@@ -16,5 +16,8 @@
 14.We created home_controller file in controller folder and made a home named object which returned h1 .
 15.Now we went to routes and mentioned const homeController = require('../controllers/home_controller') in index js; now we write a route.get(....) to initialize it.
 16.localhost8000 gives result as output from controller. 
+17.Made another route and controller of users. Here main thing i learned is the mentioning of route inside index.js for users.js and http://localhost:8000/users/profile gives us output.
+
+----> index.js is accessed first there app.use redirects to routes index.js here if url is http://localhost:8000/users/profile then app.use(/users...) is selected and redirects to users.js and there runs the controllers profile object
 
 
