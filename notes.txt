@@ -1,0 +1,10 @@
+1.Created a folder naming codeial
+2.Created a file index.js
+3.npm init in codeial:package.json Created
+4.Created folders eg routes(/home,/profile),controllers(.get function),models(schemas),view(html files),config(configurations).
+5.Express install 
+6.const express = require('express'),const app =express(),const port = 8000; and using app.listen in index js
+7.We inside package.json inside scripts chnages start = nodemon index.js it means now if i run npm start it will work same as I run nodemon index.js
+8.git init inside codeial
+9.As nodemodules files is too heavy i make a gitignore file and specify path of it inside this file,now git wont track it.
+
