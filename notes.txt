@@ -7,4 +7,14 @@
 7.We inside package.json inside scripts chnages start = nodemon index.js it means now if i run npm start it will work same as I run nodemon index.js
 8.git init inside codeial
 9.As nodemodules files is too heavy i make a gitignore file and specify path of it inside this file,now git wont track it.
+10.Now added changes by git add . and commited the changes.
+9.In routes folder in which we create a index.js file which will have routes10.
+10.Some Commands at top and after that module.exports to export this file to index.js
+11.In index.js root  we created a middleware which calls on route every time server starts.
+12.To check routes is working just console.log at routes index.js and see the terminal for confirmation 
+13.Now whem we write app.get or post we specify a route and a function.When these function or actions are written in collection is called controllers.
+14.We created home_controller file in controller folder and made a home named object which returned h1 .
+15.Now we went to routes and mentioned const homeController = require('../controllers/home_controller') in index js; now we write a route.get(....) to initialize it.
+16.localhost8000 gives result as output from controller. 
+
 
