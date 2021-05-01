@@ -8,7 +8,7 @@
 8.git init inside codeial
 9.As nodemodules files is too heavy i make a gitignore file and specify path of it inside this file,now git wont track it.
 10.Now added changes by git add . and commited the changes.
-9.In routes folder in which we create a index.js file which will have routes10.
+9.In routes folder in which we create a index.js file which will have routes.
 10.Some Commands at top and after that module.exports to export this file to index.js
 11.In index.js root  we created a middleware which calls on route every time server starts.
 12.To check routes is working just console.log at routes index.js and see the terminal for confirmation 
@@ -22,4 +22,6 @@
 18.Setted up view engine by npm install ejs and then setted view engine as ejs and allocated path for it in index.js root .
 19.Now we created a view in views folder naming home.ejs and wrote some html in it now we have to render it on home so we went to homw controller .js where we has res.end now we chnaged it to res.render and ran the server on localhost8000 it gave us the o/p from view engine.
 
-
+20.Partial and Layouts in VIEWS: Now we see in a social media that out header or footer is constant while part between it changes, for eg sometimes we need a signup form so we dont create it again and again rather we write code for signup ina seperate file and use it again and again.
+This is partial.
+21.Now layout is the HTML template,
