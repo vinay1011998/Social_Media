@@ -6,6 +6,9 @@ const expressLayouts = require('express-ejs-layouts');
 
 const db =require('./config/mongoose');
 
+app.use(express.urlencoded());
+app.use(cookieParser());
+
 app.use(express.static('./assets'));
 
 
@@ -27,7 +30,7 @@ app.set('views','./views');
 app.listen(port,function(err)   //listen to requests on port 8000
 {
     if(err)
-    {
+    { 
         console.log(`Error:${err}`);   //Interpolation using backticks
     }
     else

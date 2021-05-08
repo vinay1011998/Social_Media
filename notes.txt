@@ -58,3 +58,11 @@ in this we created a file user.js in models folder and schema was created for si
 34.Now we make forms on signup and signin pages in ejs files , in signup we created a form and for that form we just declared action in usercontroller.js in controller folder,similarly when we created form for sign in for sign in we need a session because its not permanent so we created a path as create_session there and in usercontroller.js inside controller folder we created the action for the same.
 
 
+35.Now setting cookie-parser for reading and writing into cookies, installed it using npm install cookie-parser.
+and then in root index.js added const cookieParser = require('cookie-parser'); and then app.use(cookieParser()); in order to use it.
+
+
+36.In signup procedure we edited the usercontroller.js in controller folder where we edited the create function. Now to export User schema we used const User = require('../models/user'); to include specific functions of schema and used it.
+
+37. We added a route of type post name /create in user.js in routes folder and tried running the server.
+
