@@ -24,4 +24,37 @@
 
 20.Partial and Layouts in VIEWS: Now we see in a social media that out header or footer is constant while part between it changes, for eg sometimes we need a signup form so we dont create it again and again rather we write code for signup ina seperate file and use it again and again.
 This is partial.
-21.Now layout is the HTML template,
+21.Now layout is the HTML template, in which you specify the fixed header or footer ie partial + the variable area which changes as you visit different web pages.
+            
+22.We created partials using  <%-include('_header'); %> and <%-include('_footer'); %> in home.ejs and user profile.Intially we made header and footer tag and wrote into that but later we made two files for header and footer and included it in the home and user profile .ejs files.
+
+23.We used a library for layouts and installed it using npm install exress-ejs-layouts.
+
+24.In root index.js we include const expressLayouts = require('express-ejs-layouts'); for including it and then app.use(expressLayouts);  before routing because in routes those views are going to be rendered for that you need to tell the all views that to be rendered belong to some sort of layout.
+
+25.In layout.ejs we made a normal html file with 
+            <%- body %> (variable part)element this body is include in exprees ejs layout library it renders view from home and user profile .ejs
+
+26.How it works : controller says it wants to render user profile.ejs  since my express ejs layout is being used by app ie app.use(expresslayouts),it finds a wrapper which cover my userprofile.ejs so wrapper(layout.ejs) is rendered with userprofile.ejs is sent to browser.
+
+27.We added static files for which we first included path of static folder app.use(express.static('./assets')); in this folder we created a file in css folder ie layout.css and wrote some css now to enable this css in pages we linked it in layout.ejs file 
+
+28.Now when we want to apply css to different pages or js , one way is to link sheet in every ejs file and that would be rendered via layout . ejs but that not a convenient and efficient process therefore we want to replace link of respective style sheet to be replaced with link or script tag in the layout.ejs file.
+For this use app.set('layout extractStyles',true);
+app.set('layout extractScripts',true); in root index .js and in layout js use   <%- style%> and  <%- script%> tags they would replace the respective tags from respective pages to these position.
+
+29. We  now connect to db, for this we made a file mongoose.js inside config, and then installed mongoose using npm install mongoose and then we made several statements in this file.
+
+30.In index.js we used const db =require('./config/mongoose'); for connecting the db with server.
+
+
+31. <------MANUAL AUTHENTICATION ----->
+in this we created a file user.js in models folder and schema was created for sign up having name email and password with timestamp.
+
+32.We created two files singup.ejs and signin.ejs 
+
+33.Now to connect these files we updated usercontroller .js in whcih we created signup and signin functions and then we updated in routes folder user.js file and updated the get functions.
+
+34.Now we make forms on signup and signin pages in ejs files , in signup we created a form and for that form we just declared action in usercontroller.js in controller folder,similarly when we created form for sign in for sign in we need a session because its not permanent so we created a path as create_session there and in usercontroller.js inside controller folder we created the action for the same.
+
+
