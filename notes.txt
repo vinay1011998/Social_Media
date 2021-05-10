@@ -66,3 +66,41 @@ and then in root index.js added const cookieParser = require('cookie-parser'); a
 
 37. We added a route of type post name /create in user.js in routes folder and tried running the server.
 
+38. In sign in we edited the create session in usercontroller.js in controller folder and then added the route (post) in user.js in routes folder.
+
+
+39.Now we updated the profile function in usercontroller.js amd added functionalities to it and updated user_profile.ejs with p tags.
+
+
+40.<------AUTHENTICATION USING PASSPORTJS------>
+we installed passport using npm install passport and used local startegy therefore again we installed npm intall passport-local
+
+41.Now in config folder we made a new file passport-local-strategy.js file.In this file we first imported passport and passport local startegy.
+
+42.Now we also imported USer from modes/user by const User = require('../models/user');, now using passport.use we created a new local strategy with parameter as email.
+
+43.Now we created a function which finds user and establishes its identity.
+ 44.Created serialize function which tells what part of user stored in cookie we here stored the userid.
+
+ 45.Created deserialize function tells the server to check the id of user from database this fnction is performed by deserialzer
+
+ 
+ 46.Now we may thin that automatically our cookie will be encrypted and stored but its not, it is done using a library express-sessio, install it using npm install express-session.
+
+ 47.Now in root index .js below mongoose we wtote const session = require('express-session'); and we also require passport and local startegy.
+
+ 48.Now we add a middleware which takes session cookie and encrypts it. below views.(ORDER IS ESSENTIAL),app.use(session({
+    name:'codeial',
+    secret:"blahsomething",
+    saveUninitialized:false,
+    resave:false,
+    cookie:{maxAge:(1000 * 60 * 100)}
+}));
+
+49.Now after this we need to tell app to use passport  therefore app.use(passport.initialize());
+app.use(passport.session());
+
+50. We go to users controler and complete create_session function. Assuming the user has signed in ,when passportjs uses local startegy to authenticate the user the contrl comes over create_session function and this function redirects to homepage.(Session is creted in passportjs itself)
+
+51. now go to routes folder in users.js complete the route for create_session.
+
