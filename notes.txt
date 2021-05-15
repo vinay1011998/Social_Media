@@ -104,3 +104,7 @@ app.use(passport.session());
 
 51. now go to routes folder in users.js complete the route for create_session.
 
+
+
+<---Start for 10th video of passportjs section--->
+

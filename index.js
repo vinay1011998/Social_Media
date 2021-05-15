@@ -42,6 +42,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
 //Use express router from router folders index.js
 
 app.use('/',require('./routes')); //middleware used when a server starts(before) it need to access this route.
