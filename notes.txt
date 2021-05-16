@@ -85,7 +85,7 @@ we installed passport using npm install passport and used local startegy therefo
  45.Created deserialize function tells the server to check the id of user from database this fnction is performed by deserialzer
 
  
- 46.Now we may thin that automatically our cookie will be encrypted and stored but its not, it is done using a library express-sessio, install it using npm install express-session.
+ 46.Now we may thin that automatically our cookie will be encrypted and stored but its not, it is done using a library express-session, install it using npm install express-session.
 
  47.Now in root index .js below mongoose we wtote const session = require('express-session'); and we also require passport and local startegy.
 
@@ -104,7 +104,37 @@ app.use(passport.session());
 
 51. now go to routes folder in users.js complete the route for create_session.
 
+52.We made functions in passport-local-strategy file ie checkAuthentication and setAuthenticatedUser .
+Our main task for this is to send data of signed in user to views.
+in checkAuth function we check if user is authenticated its a middleware because its has req res and next.isAuthenticated is passport function check user is signed in or not.
+
+53.Now in setAuthenticatedUser function ,wheneever a user is signed in its info is stord in req.user now to tranfer it to res.local we eqauted both.
+
+54.Now go to routes and then in user.js check that profile should only be visible when user is logged in therefore use methos passport.checkAuthentication to check it .
+
+55.Now go to index.js root set up cuurent user usage by app.use(passport.setAuthenticatedUser); it check whether a session cookie is there or not
 
 
-<---Start for 10th video of passportjs section--->
+56.Now in views section we rendered views n userprofile js , and solved problem of returning to signed in page when we pressed bavk on signin page after login to solve this problem we used a function in signup and signin  functions of usercontroller.js if(req.isAuthenticated())
+    {
+        return res.redirect('/users/profile');
+    }
+
+
+
+57.Solved problem of session cookie reset when we restart server : USE MONGO STORE AND LIBRARY CONNECT MONGO in index.js root we wrote  const MongoStore = require('connect-mongo')(session); and then in app.use we wrote a store:new MongoStore(
+        {
+       
+        mongooseConnection:db,
+        autoRemove:'disabled'
+        },
+        function(err)
+        {
+            console.log(err||'connect-mongodb setup -ok');
+        }
+    ) then sign in the local host and check by disconnecting server we are not logged out problem solved using mongo connect
+
+
+58. Now we implemented signout function we made a header chnages in header.ejs and defined a route for signout here now we go to usercontroller.ejs and defined destroySession function and completed the route for the same in routes folder user.js.
+
 
