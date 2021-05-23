@@ -9,6 +9,8 @@ router.get('/',homeController.home);
 router.use('/users',require('./users')); 
 //This sayd whenever routes index.js is called and it says it need users.js it directs to the user.js wen route  is /users
 //any other route eg / will redirect to line 7 when req comes with users it requires users route.and redirects to users.js.
-router.use('/content',require('./post'));  //http://localhost:8000/content/post
+router.use('/content',require('./post'));  //http://localhost:8000/content/post\
+router.use('/posts',require('./posts'));
+router.use('/comments',require('./comments'));
 module.exports=router; //to export it and make it available to root index.js file.
 

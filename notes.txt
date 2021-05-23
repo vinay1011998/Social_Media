@@ -137,4 +137,23 @@ in checkAuth function we check if user is authenticated its a middleware because
 
 58. Now we implemented signout function we made a header chnages in header.ejs and defined a route for signout here now we go to usercontroller.ejs and defined destroySession function and completed the route for the same in routes folder user.js.
 
+59.Now we create posts in social media,we made a file post.js in models and derived(user in schema is a refernce to user in DB USER) a schema there.Now we made chnages in home.ejs file in whcih we added a form
 
+60.Now we made a file in controller ie posts_controller.js where we created a action where we created an action which took data from browser and sent to the db.For this we need to map it to routes. therefore in routes we created a file posts.js for routes of posts and then router.use in index.js in routes folder to map this route to root index.js.and then we updated the action in home.ejs of the form.
+
+
+61.In posts_controller  user:req.user._id this the req.user comes from setAuthenticatedUser function in passportlocalstaryegy in config folder and we only need id therefore .id
+
+62.Now in homecontroller.ejs we found posts using post.find and showed it using home.ejs file,now we also wanted to show the user  who own that post for that we needed to fetch author from db along with post.W fetched using prepoluating the user and then displayed user on the page. using home.ejs
+
+63.Now we want that no onle else can subit post except user therefore in home.ejs i used authetication that is user is logged in then only we would allow form to appear but anyone can ispect and create a form and submit it therefore for this we used passport.checkAuthentication function in routes flder posts.js file to enable 2 point AUTHENTICATION
+
+64.For comments I created a schema for comments in comments.js in models folder .
+In Post schema we created an arrayu of comments in posts schemea for faster execution of comments.
+
+65.working for comments first we went to home.ejs and made a form for comments and applied authetication condition to it.Now we made a file in controllers named comment_controller.js in this file we first addded schema const Comment = require('../models/comment');
+const Post = require('../models/post'); and then logic for comments now ,First we find a post if it exists or not so we find the post by post id if post is preswnt then we create comment and side by side push comment id intto array of comments id in post schema and save it.
+
+66.Now we need to show comments and author of comments therefore -> preload the comments and show them.We performed nested operation and fetched the user who commented and list of comments.
+
+67.Now we delete a post authorized way.For this we go to posts_controller.js  we created a action here first we find is that am i authorized to delete any others post so we verify it here => user who is deleting the post is the user who wrote that post then we delete the post as well as comments from the comment schema and comment array in post 
