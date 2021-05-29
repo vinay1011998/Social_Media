@@ -156,4 +156,35 @@ const Post = require('../models/post'); and then logic for comments now ,First w
 
 66.Now we need to show comments and author of comments therefore -> preload the comments and show them.We performed nested operation and fetched the user who commented and list of comments.
 
-67.Now we delete a post authorized way.For this we go to posts_controller.js  we created a action here first we find is that am i authorized to delete any others post so we verify it here => user who is deleting the post is the user who wrote that post then we delete the post as well as comments from the comment schema and comment array in post 
+67.Now we delete a post authorized way.For this we go to posts_controller.js  we created a action here first we find is that am i authorized to delete any others post so we verify it here => user who is deleting the post is the user who wrote that post then we delete the post as well as comments from the comment schema and comment array in post.If user didnt match just return back.No we made a route in posts.js naming it /destroy and adding authenticaton to it.
+
+68.Now we move to home.ejs make a button for delete and appl y authentication to that button only if theuser is signed in and same as the user who posted it.
+
+69.Now we want to delete the comments its a tidious task for this we go to controller .js file we add a action destroy here and here we check if user of comment or owner is the one who deletes it then only delete it from comments and from the array of comments.Now we specify a route in comments.js in routes folder and then we specify the button with authorization permission in the home.ejs file.
+
+70.Now we want to display all users in home screen and only if user is signed in . WE need to get list of all user we go to homecontrollerr.js we first require User and find all users   User.find({},function(err,users)
+        {
+            return res.render('home',{
+                title:"Codeial | Home",
+                posts: posts,
+                all_users:users
+        })  
+all_users:users is used to send all the suers then we go to home.ejs and make sepetrate section for friends.Now we go to user.js in routes and update profile route with id. and from here we go to user controller where there is profile page we make chnages for it. to locate user we use USer.FindbyId and send thus useer to frontend using profile_user:user,wo dont use users key bcoz its already in users. and then we go userprofile.ejs and update the html ejs there as profile_user.name etc.
+
+
+71.Now i try to update name and email of user for that i first make a formm and authenticate it using if else condn.
+now we got to usercontroller.js in controller folder and then we make and action for it and then a respective route for it in users.js in routes folder.
+
+
+72.Now we are simplifiyng our code by applying async await in 1.Homecontrolleer.js 2.posts_controller.js 3.comment_controller
+
+
+73. Flash messages are stored in session cookies  and  clered in next request.therfore dspled only once we used library connect flash npm install connect flash, then in root indexjs we added const flash at top and start using it . and then just above app.use routes we wrote app.use flash. now we go to users controller and in login and logout code we wrote  req.flash('success','Logged in Successfully');  and same for logout.
+
+74.Now we need to send to response but its req.flash so to tranport to reponse ww created a middleware so we made a folder middleware.js in config and wrote a middleware . and then in root index.js we first required this middleware named customMware and the used it using app.use below app.use(flassh)
+
+
+75. We used noty js for colorful notification and used it in layout.ejs with help of cdn
+
+76. Now we added flash messages to posts and comments in postscontroler and comment_controller files.
+
