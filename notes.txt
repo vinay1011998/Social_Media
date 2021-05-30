@@ -190,3 +190,20 @@ now we got to usercontroller.js in controller folder and then we make and action
 
 77.Now there is a flaw that wehen ever we post a post the controller refresges the page we dont want this so we use AJAx to solve this problem.
 We first inlcuded ajax cdn in layoutejs and then in assets in js we created home_post js file in which we handled ajax. and then conncted home.ejs with this file location at last with script tag.Now after making chnages in home_post.js we then went to posts_controller where we made chnages to accept response from ajax. 
+
+78.Now we want to upload file for this we use multer library in this libarray we first installed multer using npm install multer and then we go to user_profile.ejs and edit the form adding some parameters.
+
+79. Thwn in models we go to user.js and add paths for multer and path and defines a variable AVATARpath which has path and then made a folder same as that path
+now added avatar field in user.js and added code =>
+
+.var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, '/tmp/my-uploads')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now())
+  }
+})
+
+
+ 
