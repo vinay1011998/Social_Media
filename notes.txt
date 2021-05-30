@@ -188,3 +188,5 @@ now we got to usercontroller.js in controller folder and then we make and action
 
 76. Now we added flash messages to posts and comments in postscontroler and comment_controller files.
 
+77.Now there is a flaw that wehen ever we post a post the controller refresges the page we dont want this so we use AJAx to solve this problem.
+We first inlcuded ajax cdn in layoutejs and then in assets in js we created home_post js file in which we handled ajax. and then conncted home.ejs with this file location at last with script tag.Now after making chnages in home_post.js we then went to posts_controller where we made chnages to accept response from ajax. 
